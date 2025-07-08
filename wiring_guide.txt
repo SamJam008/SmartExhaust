@@ -1,0 +1,73 @@
+===========================
+Smart Exhaust Fan - Wiring Guide
+===========================
+
+This guide lists all the sensor and module connections to the ESP32 board.
+
+---------------------------
+POWER SETUP
+---------------------------
+- ESP32 Input Voltage: 5V via USB or external 5V adapter
+- Sensor Supply Voltage: Most sensors work with 3.3V or 5V (check modules)
+
+---------------------------
+1. DHT11 Sensor (Temperature & Humidity)
+---------------------------
+- VCC  → 3.3V or 5V (depending on module)
+- GND  → GND
+- DATA → GPIO 5 (DHTPIN)
+
+---------------------------
+2. MQ-135 (Air Quality Sensor)
+---------------------------
+- VCC  → 5V
+- GND  → GND
+- AOUT → GPIO 36 (MQ135_PIN)
+
+---------------------------
+3. MQ-9 (Gas Sensor)
+---------------------------
+- VCC  → 5V
+- GND  → GND
+- AOUT → GPIO 39 (MQ9_PIN)
+
+---------------------------
+4. Manual Switch (Push Button)
+---------------------------
+- One side to GND
+- Other side to GPIO 14 (MANUAL_SWITCH_PIN)
+- Use INPUT_PULLUP mode in code
+
+---------------------------
+5. Power Sense (Voltage Divider Input)
+---------------------------
+- Connect output of voltage divider to GPIO 34 (MAIN_SENSE_PIN)
+- Resistor Divider Example: R1 = R2 = 10kΩ (scales 5V to ~2.5V)
+
+---------------------------
+6. Fan Relay Module
+---------------------------
+- IN   → GPIO 27 (FAN_RELAY_PIN)
+- VCC  → 5V
+- GND  → GND
+- Relay Output → AC fan live line
+
+⚠ CAUTION: Handle high voltage AC fan wiring carefully. Isolate relay circuit.
+
+---------------------------
+7. ESP32 Wi-Fi
+---------------------------
+- Built-in module, ensure strong 2.4GHz Wi-Fi signal nearby
+
+---------------------------
+NOTES
+---------------------------
+- Analog Inputs: MQ sensors and power sense use analogRead()
+- Digital Inputs: Manual button (LOW when pressed)
+- Fan relay: Active HIGH (GPIO HIGH turns ON relay)
+- Secure connections using jumper wires or screw terminals
+- Consider a PCB or perfboard for durability
+
+===========================
+END OF GUIDE
+===========================

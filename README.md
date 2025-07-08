@@ -37,7 +37,7 @@ An ESP32-based smart exhaust fan system using temperature, humidity, air quality
 - `sensors_used.md` – How sensors work
 
 ## Dashboard
-!(images/dashboard_ss.jpg)
+![dashboard](images/dashboard_ss.jpg)
 
 ## Getting Started
 1. Connect all components (see diagram)
